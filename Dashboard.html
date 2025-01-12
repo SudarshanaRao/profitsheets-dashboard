@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Dashboard.css">
+</head>
+<body>
+    
+    <input type="checkbox" id="sidebar-toggle">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h3 class="brand">
+                <span class="ti-unlink"></span> 
+                <span>ProfitSheets</span>
+            </h3> 
+            <label class="sidebar-toggle" for="sidebar-toggle"><i class="ri-menu-2-line"></i></label>
+        </div>
+        
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="">
+                        <span><i class="ri-home-4-line"></i></span>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-group-line"></i></span>
+                        <span>Team</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-list-check-3"></i></span>
+                        <span>Tasks</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-clipboard-line"></i></span>
+                        <span>Leaves</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-folder-open-line"></i></span>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-time-line"></i></span>
+                        <span>Timesheet</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-contacts-book-line"></i></span>
+                        <span>Contacts</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span><i class="ri-settings-5-line"></i></span>
+                        <span>Account</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    
+    <div class="main-content">
+        
+        <header>
+            <div class="search-wrapper">
+                <span><i class="ri-search-line"></i></span>
+                <input type="search" placeholder="Search">
+            </div>
+            
+            <div class="social-icons">
+                <span><i class="ri-notification-2-line"></i></span>
+                <span><i class="ri-message-3-line"></i></span>
+                <div></div>
+            </div>
+        </header>
+        
+        <main>
+            
+            <h2 class="dash-title">Admin Dashboard</h2>
+            
+            <div class="dash-cards">
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-briefcase"></span>
+                        <div>
+                            <h4>Create Task</h4>
+                            <h5>Cick below to create a new newsletter.</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" id="createTask">Click here</a>
+                    </div>
+                </div>
+
+                <!-- Popup Modal for Create -->
+                <div id="popupOverlay" style="display: none;">
+                    <div id="popup">
+                    <h3>Create Task</h3>
+                    <form id="popupForm">
+                        <label for="domain">Domain:</label>
+                        <select id="domain" name="domain" required>
+                        <option value="" disabled selected>Select a domain</option>
+                        <option value="business">Business</option>
+                        <option value="market-stocks">Market Stocks</option>
+                        <option value="others">Others</option>
+                        </select>
+                        <br><br>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="4" placeholder="Enter task description..." required></textarea>
+                        <br><br>
+                        <button type="submit" id="submitTask">Submit</button>
+                        <button type="button" id="closePopup">Cancel</button>
+                    </form>
+                    </div>
+                </div>
+                
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-reload"></span>
+                        <div>
+                            <h4>Delete Task</h4>
+                            <h5>Cick below to delete an existing newsletter.</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" id="deleteTask">Click here</a>
+                    </div>
+                </div>
+
+                <!-- Popup Modal for Delete Task-->
+                <div id="deletePopupOverlay" style="display: none;">
+                    <div id="deletePopup">
+                      <h3>Delete Task</h3>
+                      <p>Are you sure you want to delete this task?</p>
+                      <form id="deletePopupForm">
+                        <button type="submit" id="deleteSubmitTask">Yes, Delete</button>
+                        <button type="button" id="closeDeletePopup">No, Cancel</button>
+                      </form>
+                    </div>
+                  </div>
+                
+                <div class="card-single">
+                    <div class="card-body">
+                        <span class="ti-check-box"></span>
+                        <div>
+                            <h4>Update Task</h4>
+                            <h5>Cick below to update an existing newsletter.</h5>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <a id="updateTask" href="">Click Here</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popup Modal for Update Task -->
+            <div id="updatePopupOverlay" style="display: none;">
+                <div id="updatePopup">
+                <h3>Update Task</h3>
+                <form id="updatePopupForm">
+                    <label for="updateDomain">Domain:</label>
+                    <select id="updateDomain" name="domain" required>
+                    <option value="" disabled selected>Select a domain</option>
+                    <option value="business">Business</option>
+                    <option value="market-stocks">Market Stocks</option>
+                    <option value="others">Others</option>
+                    </select>
+                    <br><br>
+                    <label for="updateDescription">Description:</label>
+                    <textarea id="updateDescription" name="description" rows="4" placeholder="Update task description..." required></textarea>
+                    <br><br>
+                    <button type="submit" id="updateSubmitTask">Update</button>
+                    <button type="button" id="closeUpdatePopup">Cancel</button>
+                </form>
+                </div>
+            </div>
+            
+            
+            <section class="recent">
+                <div class="activity-grid">
+                    <div class="activity-card">
+                        <h3>Recent activity</h3>
+                        
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Task</th>
+                                        <th>Domain</th>
+                                        <th>Creation Date</th>
+                                        <th>Team</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Create</td>
+                                        <td>Market Actions</td>
+                                        <td>12 Jan, 2025</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge success">Success</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delete</td>
+                                        <td>Business</td>
+                                        <td>12 Jan, 2025</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge warning">Processing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Create</td>
+                                        <td>Market Actions</td>
+                                        <td>12 Jan, 2025</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge success">Success</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Update</td>
+                                        <td>Business</td>
+                                        <td>11 Jan, 2025</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge warning">Processing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Delete</td>
+                                        <td>Market Actions</td>
+                                        <td>11 Jan, 2025</td>
+                                        <td class="td-team">
+                                            <div class="img-1"></div>
+                                            <div class="img-2"></div>
+                                            <div class="img-3"></div>
+                                        </td>
+                                        <td>
+                                            <span class="badge success">Success</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="summary">
+                        <div class="summary-card">
+                            <div class="summary-single">
+                                <span class="ti-id-badge"></span>
+                                <div>
+                                    <h5>196</h5>
+                                    <small>Number of staff</small>
+                                </div>
+                            </div>
+                            <div class="summary-single">
+                                <span class="ti-calendar"></span>
+                                <div>
+                                    <h5>16</h5>
+                                    <small>Number of leave</small>
+                                </div>
+                            </div>
+                            <div class="summary-single">
+                                <span class="ti-face-smile"></span>
+                                <div>
+                                    <h5>12</h5>
+                                    <small>Profile update request</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bday-card">
+                            <div class="bday-flex">
+                                <div class="bday-img"></div>
+                                <div class="bday-info">
+                                    <h5>Dwayne F. Sanders</h5>
+                                    <small>Birthday Today</small>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button>
+                                    <span class="ti-gift"></span>
+                                    Wish him
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+        
+    </div>
+    
+    <script src="Dashboard.js"></script>
+</body>
+</html>
